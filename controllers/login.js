@@ -28,7 +28,8 @@ exports.login = async (req, res) => {
                         });
                     else{
                         req.session.message = ID
-                        return res.redirect('/home');
+                        // return res.redirect('/home');
+                        return {status : 'OK'};
                     }
                 }
             })

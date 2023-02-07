@@ -52,6 +52,11 @@ app.get('/home', function (req, res) {
    home.student_details(req, res);
 })
 
+app.get('/', function (req, res) {
+   console.log("Got a POST request for the homepage");
+   res.send('Hello POST');
+})
+
 app.get('/home/registration', function (req, res) {
    console.log("Got a POST request for the homepage");
    res.send('Hello POST');
@@ -61,8 +66,8 @@ app.get('/course/running', function(req, res) {
    departments.department_list(req, res);
 })
 
-app.get('/course/running/:dept_id', function(req, res) {
-   departments.department_list(req, res);
+app.get('/course/running/:dept_name', function(req, res) {
+   department_course.department_course_list(req, res);
 })
 
 app.get('/course/:course_id', function (req, res) {

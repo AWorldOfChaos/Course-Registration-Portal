@@ -1,9 +1,10 @@
 const  client  =  require("../configs/database");
 
 exports.department_course_list = async (req, res) => {
+    var dept_name = req.params.dept_name;
     try {
         // Checking if user already exists
-        const data  =  await client.query(`SELECT STRING_AGG(title, ', ') AS course_list, dept_name FROM course GROUP BY dept_name;`);
+        const data  =  await client.query(`SELECT title FROM course WHERE dept_name=$1;`, [dept_name]);
         const arr  =  data.rows;
         if (arr.length  ===  0) {
             return  res.status(400).json({

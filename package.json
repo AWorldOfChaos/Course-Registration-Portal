@@ -21,6 +21,8 @@
     "express-session": "^1.17.3",
     "json-data": "^0.0.1",
     "pg": "^8.9.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "request": "^2.88.2"
   }
 }
