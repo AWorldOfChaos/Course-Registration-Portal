@@ -1,10 +1,9 @@
 const  client  =  require("../configs/database");
 
-exports.department_course_list = async (req, res) => {
-    var dept_name = req.params.dept_name;
+exports.current_courses = async (req, res) => {
     try {
         // Checking if user already exists
-        const data  =  await client.query(`SELECT title, course_id FROM course WHERE dept_name=$1;`, [dept_name]);
+        const data  =  await client.query(`SELECT course.course_id, course.title, section.sec_id FROM course JOIN section ON course.course_id=section.course_id WHERE section.semester='Fall' and section.year='2010';`);
         const arr  =  data.rows;
         if (arr.length  ===  0) {
             return  res.status(400).json({
@@ -12,9 +11,10 @@ exports.department_course_list = async (req, res) => {
             });
         }
         else {
-            return res.status(200).json(arr);
+            return res.status(200).json(arr); 
         }
     }
+    
     // Database connection error
     catch (err) {
         console.log(err);

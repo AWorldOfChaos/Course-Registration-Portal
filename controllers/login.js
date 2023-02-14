@@ -27,9 +27,10 @@ exports.login = async (req, res) => {
                             error: "Enter correct password!",
                         });
                     else{
-                        req.session.message = ID
-                        // return res.redirect('/home');
-                        return {status : 'OK'};
+                        req.session.message = ID;
+                        res.status(200).json({
+                            status : 'OK',
+                        });
                     }
                 }
             })
